@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Image } from "react-native";
 
+import CacheImage from "./CacheImage";
+
 class ProfileImage extends Component {
   state = {};
   render() {
     return (
       <View style={styles.container}>
-        <Image
+        <CacheImage
           style={styles.image}
-          source={{
-            uri:
-              "https://www.pexels.com/photo/astronomy-beautiful-clouds-constellation-355465/"
-          }}
+          uri="https://www.pexels.com/photo/astronomy-beautiful-clouds-constellation-355465/"
         />
       </View>
     );

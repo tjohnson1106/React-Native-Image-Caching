@@ -8,28 +8,29 @@ class CacheImage extends Component {
     source: null
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { uri } = this.props;
     const name = shorthash.unique(uri);
+    console.log(name);
     const path = `${FileSystem.cacheDirectory}${name}`;
     const image = await FileSystem.getInfoAsync(path);
     if (image.exists) {
-        console.log("Read image from cache");
-        this.setState({
-            source: {
-                uri: image.uri
-            }
-        })
-        return;
+      console.log("Read image from cache");
+      this.setState({
+        source: {
+          uri: image.uri
+        }
+      });
+      return;
     }
 
     console.log("downloading image to cache");
     const newImage = await FileSystem.downloadAsync(uri, path);
     this.setState({
-        source: {
-            uri: newImage.uri
-        }
-    })
+      source: {
+        uri: newImage.uri
+      }
+    });
   };
 
   render() {
